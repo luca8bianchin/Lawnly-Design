@@ -1011,6 +1011,18 @@ body[data-theme="light"] .nav-lens{box-shadow:0 0 22px rgba(76,140,63,.75), inse
 .nav{justify-content:safe center !important;overflow-x:auto !important;overflow-y:hidden !important;gap:2px !important;scrollbar-width:none;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;}
 .nav::-webkit-scrollbar{display:none;}
 .nv,.nav-plus{flex-shrink:0 !important;}
+
+/* ===== nav: tutte le icone visibili + nome flottante sopra l'attiva ===== */
+.nav{justify-content:space-between !important;overflow:visible !important;gap:0 !important;}
+.nv,.nav-plus{flex-shrink:0 !important;}
+.nv{padding:10px !important;}
+.nv.on{padding:10px !important;}
+.nv-l{position:absolute !important;bottom:calc(100% + 8px);left:50%;
+  transform:translateX(-50%);display:none !important;max-width:none !important;opacity:1 !important;margin:0 !important;
+  white-space:nowrap;background:var(--card);border:1px solid var(--line);color:var(--ink);
+  padding:4px 11px;border-radius:999px;font-size:11.5px;font-weight:700;box-shadow:var(--sh);z-index:6;pointer-events:none;}
+.nv.on .nv-l{display:inline-block !important;animation:nameIn .25s ease;}
+@keyframes nameIn{0%{opacity:0;transform:translateX(-50%) translateY(5px);}100%{opacity:1;transform:translateX(-50%) translateY(0);}}
 </style>
 </head>
 <body data-theme="light"><svg width="0" height="0" style="position:absolute;pointer-events:none" aria-hidden="true"><defs><linearGradient id="gGreen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A9D98A"/><stop offset="1" stop-color="#3E7C32"/></linearGradient><linearGradient id="gBlue" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9CC9F1"/><stop offset="1" stop-color="#4886C4"/></linearGradient><linearGradient id="gAmber" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F4CC7E"/><stop offset="1" stop-color="#D27E1C"/></linearGradient><linearGradient id="gWhite" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#E6EFDC"/></linearGradient></defs></svg>
