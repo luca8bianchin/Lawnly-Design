@@ -1238,11 +1238,11 @@ setTimeout(anim,200);
   function navOn(i){nv.forEach(function(t,k){t.classList.toggle('on',k===i);});}
   function popIcon(i){var s=nv[i]&&nv[i].querySelector('svg');if(s){s.classList.remove('pop');void s.offsetWidth;s.classList.add('pop');setTimeout(function(){s.classList.remove('pop');},860);}}
   function enterScreen(i){var scr=document.querySelectorAll('.screen')[i];if(scr){scr.classList.remove('anim-in');void scr.offsetWidth;scr.classList.add('anim-in');scr.querySelectorAll('.prod-bar i,.comp i').forEach(function(b){var wv=b.getAttribute('data-w')||b.style.width;if(wv){b.setAttribute('data-w',wv);b.style.transition='none';b.style.width='0';requestAnimationFrame(function(){requestAnimationFrame(function(){b.style.transition='width .9s cubic-bezier(.2,.8,.2,1)';b.style.width=wv;});});}});}var H=[window._oggi,window._piano,window._prato,window._meteo,window._mag,window._profilo];if(H[i])H[i]();}
-  function go(i){i=Math.max(0,Math.min(n-1,i));setW();prog=true;idx=i;navOn(i);posLens(i);track.scrollTo({left:i*w,behavior:'smooth'});clearTimeout(pt);pt=setTimeout(function(){prog=false;},700);}
+  function go(i){i=Math.max(0,Math.min(n-1,i));setW();prog=true;idx=i;navOn(i);posLens(i);popIcon(i);track.scrollLeft=i*w;enterScreen(i);clearTimeout(pt);pt=setTimeout(function(){prog=false;},220);}
   track.addEventListener('scroll',function(){
     var W=track.clientWidth||1;
     if(!prog){var ni=Math.round(track.scrollLeft/W);if(ni!==idx&&ni>=0&&ni<n){idx=ni;navOn(ni);posLens(ni);}}
-    clearTimeout(st);st=setTimeout(function(){var s=Math.round(track.scrollLeft/(track.clientWidth||1));if(s>=0&&s<n){idx=s;navOn(s);posLens(s);popIcon(s);enterScreen(s);}prog=false;},130);
+    clearTimeout(st);st=setTimeout(function(){if(prog){prog=false;return;}var s=Math.round(track.scrollLeft/(track.clientWidth||1));if(s>=0&&s<n){idx=s;navOn(s);posLens(s);popIcon(s);enterScreen(s);}},130);
   },{passive:true});
   nv.forEach(function(t){t.addEventListener('click',function(){go(parseInt(t.dataset.i));});});
   setW();
